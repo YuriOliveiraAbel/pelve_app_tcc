@@ -15,14 +15,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0, backgroundColor: kPrimaryColor),
       backgroundColor: kPrimaryColor,
       body: Container(
         width: double.maxFinite,
-        padding: const EdgeInsets.symmetric(horizontal: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 40)
+            .add(const EdgeInsets.only(top: kToolbarHeight * 0.4)),
         child: SingleChildScrollView(
+          padding: EdgeInsets.zero,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const FittedBox(
                 fit: BoxFit.fitWidth,
@@ -37,7 +38,17 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+              const Text(
+                'By Manuela Abel',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "Oswald",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 12),
               const Text(
                 'Olá, bem vinda!\nPor favor\ncrie sua conta.',
                 textAlign: TextAlign.center,
@@ -97,7 +108,7 @@ class _HomeViewState extends State<HomeView> {
                 text: 'Próximo',
                 heigth: 55,
                 onTap: () {
-                  Modular.to.pushReplacementNamed('/helper/');
+                  Modular.to.pushNamed('/helper/');
                 },
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
